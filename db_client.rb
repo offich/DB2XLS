@@ -12,7 +12,7 @@ class DbClient
   TABLE_KEYS = %w(Field Type Null Key Default Extra).map(&:freeze).freeze
 
   def initialize
-    @client ||= Mysql2::Client.new(host: ENV['MYSQL_HOST'], username: ENV['MYSQL_USERNAME'], password: ENV['MYSQL_PASSWORD'], database: ENV['MYSQL_DATABASE'], port: ENV['MYSQL_PORT'])
+    @client = Mysql2::Client.new(host: ENV['MYSQL_HOST'], username: ENV['MYSQL_USERNAME'], password: ENV['MYSQL_PASSWORD'], database: ENV['MYSQL_DATABASE'], port: ENV['MYSQL_PORT'])
   end
 
   def columns_in_all_tables
