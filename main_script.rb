@@ -11,6 +11,6 @@ if file_name.nil?
 end
 
 data = DbClient.instance.columns_in_all_tables
-CsvFileCreator.new(file_name: "./#{file_name}.csv").generate_file(data: data)
+CsvFileCreator.new(file_name: "./#{file_name}.xls").generate_file(data: data)
 
 p 'CSVへの吐き出しが終了しました'

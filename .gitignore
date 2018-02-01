@@ -3,3 +3,4 @@
 vendor
 .env
 *.csv
+.DS_Store
