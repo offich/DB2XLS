@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'spreadsheet'
+
 class TableSchema
   attr_accessor :header, :result
 
