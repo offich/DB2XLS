@@ -1,4 +1,11 @@
 require './app/schema_investigation_task.rb'
 
-task = SchemaInvestigationTask.new
-task.run
+my_local_task = SchemaInvestigationTask.new(
+  investigator: MyLocalDb.instance, 
+  formatters: [
+    Outs::Xls.new, 
+    Outs::Console.new
+  ]
+)
+
+my_local_task.run
