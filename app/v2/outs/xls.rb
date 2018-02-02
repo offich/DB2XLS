@@ -1,15 +1,22 @@
-module Outs
-  class Xls
-    include Interfaces::SchemaFormatter
+require 'rubygems'
+require 'spreadsheet'
 
-    attr_accessor :file_name
+module App
+  module V2
+    module Outs
+      class Xls
+        include Interfaces::SchemaFormatter
 
-    def initialize(file_name:)
-      @file_name = file_name
-    end 
+        attr_accessor :file_name
 
-    def format(schema)
+        def initialize(file_name:)
+          @file_name = file_name
+        end 
 
+        def format(schema)
+
+        end
+      end
     end
   end
 end
