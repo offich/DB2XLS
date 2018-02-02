@@ -3,8 +3,9 @@ require 'singleton'
 require 'mysql2'
 require 'dotenv'
 require 'pry'
-require_relative './database_schema.rb'
-require_relative './table_schema.rb'
+require_relative 'database_schema'
+require_relative 'table_schema'
+require_relative 'interfaces/schema_investigator'
 
 Dotenv.overload
 
@@ -13,7 +14,7 @@ module App
   module V2
     class MyLocalDb 
       include Singleton
-      include Interfaces::SchemaInvestigator
+      include V2::Interfaces::SchemaInvestigator
 
       def initialize
         @db_client = Mysql2::Client.new(
@@ -29,24 +30,24 @@ module App
       def table_schemas
         @db_client.query('show tables').map{ |table| 
           table_name = table["Tables_in_#{ENV['MYSQL_DATABASE']}"] 
-          return {
-            "#{table_name}": {
-              header:  self.table_header(table: table),
-              columns: self.table_columns(table: table)
-            }
+
+          {
+            table_name: table_name,
+            header:     self.table_header(table_name: table_name),
+            columns:    self.table_columns(table_name: table_name)
           }
         }
       end
 
-      def table_header(table:)
-        headers = @db_client.query("describe #{table}").map { |column| column.keys }
+      def table_header(table_name:)
+        headers = @db_client.query("describe #{table_name}").map { |column| column.keys }
 
         return %w(Field Type Null Key Default Extra).map(&:freeze).freeze if headers.nil?
-        header.first 
+        headers.first 
       end
 
-      def table_columns(table:)
-        @db_client.query("describe #{table}").map { |column| column.values }
+      def table_columns(table_name:)
+        @db_client.query("describe #{table_name}").map { |column| column.values }
       end
     end
   end

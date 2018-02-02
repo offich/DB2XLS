@@ -1,4 +1,4 @@
-require_relative './table_schema.rb'
+require_relative 'table_schema'
 
 module App
   module V2
@@ -8,10 +8,12 @@ module App
       end
 
       def tables
-        @table_schemas.map { |table_schema|
-          {
-            TableSchema.new(header: table_schema[:header], result: table_schema[:schema])
-          }
+        @table_schemas.map { |table_schema| 
+          TableSchema.new(
+            table_name: table_schema[:table_name], 
+            header:     table_schema[:header], 
+            columns:    table_schema[:columns]
+          )
         }
       end
     end

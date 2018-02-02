@@ -1,3 +1,5 @@
+require_relative '../interfaces/schema_formatter'
+
 module App
   module V2
     module Outs
@@ -10,7 +12,7 @@ module App
           @file_name = file_name
         end
 
-        def format
+        def format(schemas:)
 
         end
       end

@@ -1,17 +1,17 @@
 require 'rubygems'
 require 'pry'
-require './app/v2/schema_investigation_task.rb'
-require './app/v2/my_local_db.rb'
-require './app/v2/out/console.rb'
-require './app/v2/out/xls.rb'
+require_relative 'app/v2/schema_investigation_task'
+require_relative 'app/v2/my_local_db'
+require_relative 'app/v2/outs/console'
+require_relative 'app/v2/outs/xls'
 
-file_name = ARGS[0].nil? ? 'staging.xls' : ARGS[0]
+file_name = ARGV[0].nil? ? 'staging.xls' : ARGV[0]
 
-my_local_task = V2::SchemaInvestigationTask.new(
-  investigator: V2::MyLocalDb.instance, 
+my_local_task = App::V2::SchemaInvestigationTask.new(
+  investigator: App::V2::MyLocalDb.instance, 
   formatters: [
-    Outs::Xls.new(file_name: file_name), 
-    Outs::Console.new
+    App::V2::Outs::Xls.new(file_name: file_name), 
+    App::V2::Outs::Console.new(file_name: file_name)
   ]
 )
 
