@@ -5,3 +5,4 @@ vendor
 *.csv
 .DS_Store
 out_files/
+*.xls
