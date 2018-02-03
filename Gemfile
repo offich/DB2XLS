@@ -9,6 +9,7 @@ group :production, :development do
   gem 'dotenv'
   gem 'mysql2'
   gem 'spreadsheet'
+  gem 'activesupport'
 end
 
 group :development do
