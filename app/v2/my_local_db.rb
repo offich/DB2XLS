@@ -5,7 +5,6 @@ require 'dotenv'
 require 'pry'
 require_relative 'database_schema'
 require_relative 'table_schema'
-require_relative 'interfaces/schema_investigator'
 
 Dotenv.overload
 
@@ -23,18 +22,18 @@ module App
       end
 
       def investigate
-        DatabaseSchema.new(table_schemas: self.table_schemas).tables
+        DatabaseSchema.new(table_schema: self.table_schemas)
       end
 
       def table_schemas
         @db_client.query('show tables').map{ |table| 
           table_name = table["Tables_in_#{ENV['MYSQL_DATABASE']}"] 
 
-          {
-            table_name: table_name,
-            header:     self.table_header(table_name: table_name),
+          TableSchema.new(
+            table_name: table_name, 
+            header:     self.table_header(table_name: table_name), 
             columns:    self.table_columns(table_name: table_name)
-          }
+          )
         }
       end
 

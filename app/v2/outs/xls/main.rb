@@ -13,13 +13,13 @@ module App
             @sheet     = Spreadsheet::Workbook.new
           end 
 
-          def format(schemas:)
-            schemas.each do |schema|
+          def format(database_schema:)
+            database_schema.table_schemas.each do |schema|
               sub_sheet = App::V2::Outs::Xls::Sub.new(main: @sheet)
               sub_sheet.name(name: schema.table_name)
               sub_sheet.header(header: schema.header)
               sub_sheet.cells(columns: schema.columns)
-              @sheet.save
+              self.save
             end
           end
 

@@ -8,9 +8,9 @@ module App
 
       def run
         if @investigator.respond_to?(:investigate) && @formatters.all?{ |formatter| formatter.respond_to?(:format) }
-          schemas = @investigator.investigate
+          database_schema = @investigator.investigate
           @formatters.each do |formatter|
-            formatter.format(schemas: schemas)
+            formatter.format(database_schema: database_schema)
           end
         else 
           raise NotImplementedError

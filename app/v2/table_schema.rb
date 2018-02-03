@@ -9,5 +9,4 @@ class TableSchema
     @header     = header
     @columns    = columns
   end
-
 end

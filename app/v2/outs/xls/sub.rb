@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'spreadsheet'
 require 'active_support/all'
 
 module App
@@ -9,7 +11,7 @@ module App
           HEADER_ROW = 0
 
           def initialize(main:)
-            @sub_sheet = @main.create_worksheet
+            @sub_sheet = main.create_worksheet
           end
 
           def name(name:)
