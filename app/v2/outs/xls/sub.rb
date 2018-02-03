@@ -18,16 +18,10 @@ module App
             @sub_sheet.name = name
           end
 
-          def header(header:)
-            @sub_sheet.row(HEADER_ROW).concat(header)
-          end
-
-          def cells(columns:)
-            columns.each_with_index do |cell_row, cell_column|
-              cell_row.each_with_index do |cell, cell_index_in_row|
-                cell_column += 1 if @sub_sheet[cell_column, cell_index_in_row].present?
-                @sub_sheet[cell_column, cell_index_in_row] = cell
-              end
+          def cells(header:, columns:)
+            columns.insert(HEADER_ROW, header)
+            columns.each_with_index do |row, index|
+              @sub_sheet.insert_row(index, row)
             end
           end
         end

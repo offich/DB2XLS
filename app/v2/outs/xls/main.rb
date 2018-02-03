@@ -17,8 +17,7 @@ module App
             database_schema.table_schemas.each do |schema|
               sub_sheet = App::V2::Outs::Xls::Sub.new(main: @sheet)
               sub_sheet.name(name: schema.table_name)
-              sub_sheet.header(header: schema.header)
-              sub_sheet.cells(columns: schema.columns)
+              sub_sheet.cells(header: schema.header, columns: schema.columns)
               self.save
             end
           end
