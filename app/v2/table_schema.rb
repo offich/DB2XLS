@@ -2,7 +2,7 @@ require 'rubygems'
 require 'spreadsheet'
 
 class TableSchema
-  attr_accessor :table_name, :header, :columns
+  attr_reader :table_name, :header, :columns
 
   def initialize(table_name:, header:, columns:)
     @table_name = table_name

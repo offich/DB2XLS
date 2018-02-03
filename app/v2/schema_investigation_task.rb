@@ -3,13 +3,17 @@ module App
     class SchemaInvestigationTask
       def initialize(investigator:, formatters:)
         @investigator = investigator
-        @formatters = formatters
+        @formatters   = formatters
       end
 
       def run
-        schemas = @investigator.investigate
-        @formatters.each do |formatter|
-          formatter.format(schemas: schemas)
+        if @investigator.respond_to?(:investigate) && @formatters.all?{ |formatter| formatter.respond_to?(:format) }
+          schemas = @investigator.investigate
+          @formatters.each do |formatter|
+            formatter.format(schemas: schemas)
+          end
+        else 
+          raise NotImplementedError
         end
       end
     end

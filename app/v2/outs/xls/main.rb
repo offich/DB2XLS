@@ -1,15 +1,12 @@
-require          'rubygems'
-require          'spreadsheet'
-require_relative '../interfaces/schema_formatter'
+require 'rubygems'
+require 'spreadsheet'
 
 module App
   module V2
     module Outs
       module Xls
         class Main
-          include Interfaces::SchemaFormatter
-
-          attr_accessor :file_name
+          attr_writer :file_name
 
           def initialize(file_name:)
             @file_name = file_name

@@ -14,7 +14,6 @@ module App
   module V2
     class MyLocalDb 
       include Singleton
-      include V2::Interfaces::SchemaInvestigator
 
       def initialize
         @db_client = Mysql2::Client.new(
