@@ -28,6 +28,6 @@ class DbClient
   end
 
   def columns(table:)
-    @client.query("describe #{table}").map { |column| column.values }
+    @client.query("describe #{table}").map { |row| row.values }
   end
 end
