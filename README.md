@@ -1,4 +1,4 @@
-# DB2CSV
+# DB2XLS
 
 This repository allows you to print out all tables structures in MySql Database.
 Make sure you have ruby 2.4.3 version in your local environment.
