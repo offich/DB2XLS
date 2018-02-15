@@ -4,8 +4,8 @@ require 'pry'
 
 require 'test/unit'
 
-require_relative '../app/v2/my_local_db'
-require_relative '../app/v2/table_schema'
+require_relative '../../app/v2/my_local_db'
+require_relative '../../app/v2/table_schema'
 
 Dotenv.load('../.env')
 
