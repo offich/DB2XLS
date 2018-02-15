@@ -13,6 +13,17 @@ module V2
         @console = App::V2::Outs::Console.new(file_name: 'staging.xls')
       end
 
+      # ここのテストをどのように書けばいいのかわからなくて、余白にしました..。
+      # def format(database_schema:)
+      #   p @file_name
+      #   database_schema.table_schemas.each do |table_schema|
+      #     p '-------------------'
+      #     p table_schema.table_name
+      #     p table_schema.header
+      #     table_schema.columns.each do |row|
+      #       p row
+      #     end
+      #  end
       def test_format
 
       end
