@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'spreadsheet'
-require 'active_support/all'
 
 module App
   module V2
@@ -29,4 +28,3 @@ module App
     end
   end
 end
- 
