@@ -19,17 +19,6 @@ module V2
       )
     end
 
-    # このメソッドのテストをどのように書くべきか、ヒントをいただけないでしょうか？
-    # def run
-    #   if @investigator.respond_to?(:investigate) && @formatters.all?{ |formatter| formatter.respond_to?(:format) }
-    #     database_schema = @investigator.investigate
-    #     @formatters.each do |formatter|
-    #       formatter.format(database_schema: database_schema)
-    #     end
-    #   else
-    #     raise NotImplementedError
-    #   end
-    # end
     def test_run
 
     end
