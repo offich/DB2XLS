@@ -12,6 +12,7 @@ group :production, :development do
   gem 'activesupport'
 end
 
-group :development do
+group :development, :test do
   gem 'pry'
+  gem 'test-unit'
 end

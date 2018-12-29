@@ -2,7 +2,6 @@ require 'rubygems'
 require 'singleton'
 require 'mysql2'
 require 'dotenv'
-require 'pry'
 require_relative 'database_schema'
 require_relative 'table_schema'
 
