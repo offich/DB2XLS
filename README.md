@@ -24,3 +24,5 @@ bundle exec ruby main_script.rb {file_name}
 ```
 
 3. then all table structures in your database will be printed into the file in the output directory!!
+
+4. Any brand new feature, pull request, or issue is welcome!
