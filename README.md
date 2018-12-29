@@ -16,6 +16,7 @@ MYSQL_DATABASE=hogedatabase
 2. execute the command below and enter the name of the file you would like to output.
 ```
 bundle install --path vendor/bundle
-bundle exec ruby main_script.rb
+bundle exec ruby main_script.rb {file_name}
 ```
 
+3. then all table structures in your database will be printed into the file in the output directory!!
